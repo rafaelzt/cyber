@@ -3,20 +3,18 @@
 #                                                         :::      ::::::::    #
 #    exec.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rzamolo- <rzamolo-@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:17:15 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/11 14:34:20 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/11 17:11:30 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import sys
 
-if __name__ == '__main__':
-    arguments = sys.argv[1:]
-    size = len(arguments)
-    count = 0
+new_list = []
+arguments = (sys.argv[1:][::-1]) # reverse the list
+for argument in arguments: # iterate over the list
+    new_list.append(argument[::-1]) # reverse each word
 
-    while (count < size):
-        print(arguments[count])
-
+print(' '.join(new_list)) # join the list with a space
