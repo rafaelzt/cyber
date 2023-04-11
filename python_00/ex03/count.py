@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:23:21 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/11 18:30:30 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/11 18:50:11 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,3 +45,5 @@ def text_analyzer(argument = sys.argv[1:]):
 	print("-", punct, "punctuation mark(s)")
 	print("-", space, "space(s)")
 	
+if __name__ == "__main__":
+	text_analyzer(''.join(sys.argv[1:]))
