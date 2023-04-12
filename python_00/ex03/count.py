@@ -6,11 +6,11 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:23:21 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/12 12:57:31 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/12 14:01:27 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# TODO: Solve arguments passed via python ide
+# TODO: Solve arguments passed via python ide (use * in def argument)
 
 import sys
 
