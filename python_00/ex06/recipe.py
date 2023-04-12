@@ -11,6 +11,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+# TODO: Protect functions if received null
+
 cookbook = {
 	"sandwich":{
 		"ingredients":["ham", "bread", "cheese", "tomatoes"],
@@ -35,6 +37,7 @@ def print_cookbook():
 	print("."*80)
 	for recipe in (cookbook.keys()):
 		print("{}".format(recipe))
+	# print(*cookbook, sep="\n")
 
 def print_details(rcp):
 	print("\nRecipe for {}:".format(rcp))
