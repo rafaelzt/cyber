@@ -22,21 +22,30 @@ def header():
 if __name__ == "__main__":
 	header()
 	secret = random.randint(0,99)
-	count = 0
+	secret = 42
+	count = 1
 
 	while (True):
 		user_input = input("What's your guess between 1 and 99?\n>> ")
+		if (user_input == "exit"):
+			break
 		try:
 			user_input = int(user_input)
 			if (user_input > secret):
 				print("Too high!")
-				count += 1
 			elif (user_input < secret):
 				print("Too low!")
-				count += 1
+			elif (user_input == secret) and (count == 1):
+				if (secret == 42):
+					print("The answer to the ultimate question of life, the universe and everything is 42.")
+				print("Congratulations! You got it on your first try!")
+				break
 			else:
+				if (secret == 42):
+					print("The answer to the ultimate question of life, the universe and everything is 42.")
 				print("Congratulation, you've got it!")
 				print("You won in {} attempts!".format(count))
 				break
 		except:
 			print("That's not a number.")
+		count += 1
