@@ -19,22 +19,24 @@ def header():
 	print("Type 'exit' to end the game")
 	print("Good luck!")
 
-def validate_input(chr):
-	pass
-		
-
-
 if __name__ == "__main__":
 	header()
-	print(random.randint(0,99))
+	secret = random.randint(0,99)
 	count = 0
 
 	while (True):
 		user_input = input("What's your guess between 1 and 99?\n>> ")
-		
-		if not (isinstance(user_input), int):
+		try:
+			user_input = int(user_input)
+			if (user_input > secret):
+				print("Too high!")
+				count += 1
+			elif (user_input < secret):
+				print("Too low!")
+				count += 1
+			else:
+				print("Congratulation, you've got it!")
+				print("You won in {} attempts!".format(count))
+				break
+		except:
 			print("That's not a number.")
-		elif (user_input = 'exit'):
-			break
-		el
-
