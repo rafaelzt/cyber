@@ -11,8 +11,29 @@
 #                                                                              #
 # **************************************************************************** #
 
-lst = range(100)
+import time
 
-for value, idx in (enumerate(lst, 0)): 
-	# enumarate (create a tuple with list elements and give an index starting from second argument : 1)
-	print(f"{idx} -> {value}")
+def draw_bar():
+	start = 0
+	end = 50
+	step = 1
+	i = 0
+
+	for i in 
+	print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][".format(eta=3.4, prog_perc=20.34), end="")
+	# [{done:=<test1}{tbd:<test2}
+	print("="*i + ">", end="")
+	print(" "*(end - i), end="")
+	print("] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(current=1000, end=10000, time=1.33	))
+
+	i = 20
+
+	print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][".format(eta=3.4, prog_perc=20.34), end="")
+	# [{done:=<test1}{tbd:<test2}
+	print("="*i + ">", end="")
+	print(" "*(end - i), end="")
+	print("] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(current=1000, end=10000, time=1.33	))
+
+
+if __name__ == "__main__":
+	draw_bar()
