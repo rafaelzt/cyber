@@ -21,8 +21,7 @@ morse_dict = {'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.',
 			'3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', 
 			'8':'---..', '9':'----.', '0':'-----'}
 
-arguments = sys.argv[1:]
-arguments = [letter.upper() for letter in arguments]
+arguments = [letter.upper() for letter in sys.argv[1:]]
 
 for word in arguments:
 	for letter in word:

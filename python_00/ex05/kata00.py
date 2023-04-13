@@ -14,16 +14,18 @@
 kata = (19, 20, 25)
 
 
-print("The {} numbers are: ".format(len(kata)), end="")
-if (len(kata) == 1):
-	print("{}".format(kata[len(kata) - 1]))
-else:
-	for i in range(len(kata) - 1):
-		print("{}".format(kata[i]), end=", ")
-	print("{}".format(kata[len(kata) - 1]))
-
 # print("The {} numbers are: ".format(len(kata)), end="")
-# print(*kata, sep=', ')
+# if (len(kata) == 1):
+# 	print("{}".format(kata[len(kata) - 1]))
+# else:
+# 	for i in range(len(kata) - 1):
+# 		print("{}".format(kata[i]), end=", ")
+# 	print("{}".format(kata[len(kata) - 1]))
+
+print("The {} numbers are: ".format(len(kata)), end="")
+print(*kata, sep=', ')
+
+# print(type(kata))
 
 # print(f"The {len(kata)} numbers are: {kata[0]}, {kata[1]}, {kata[2]}")
 # print("The {} numbers are: {}, {}, {}".format(kata[0], kata[1], kata[2]))
