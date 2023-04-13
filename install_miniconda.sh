@@ -12,6 +12,6 @@ $MYPATH/bin/conda config --set auto_activate_base false
 source ~/.zshrc
 
 echo "Create conda environment (42AI-\$USER)"
-conda create --name 42AI-$USER python=3.7 jupyter pandas pycodestyle numpy
+conda create --name 42AI-$USER python=3.7 jupyter pandas pycodestyle numpy -y
 
 conda info --envs
