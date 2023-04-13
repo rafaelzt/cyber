@@ -15,7 +15,7 @@ import sys
 
 
 def ft_remove_punctuation(string):
-	punctuation = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+	punctuation = "!#$%&'()\"*+,-./:;<=>?@[\\]^_`{|}~"
 	return(''.join([' ' if char in punctuation else char for char in string])) # List comprehention
 	# For each char in string test if char is in punctuation and if true change to <space> else keep char
 
@@ -23,6 +23,7 @@ def ft_remove_punctuation(string):
 def ft_filter(string, number):
 	new_string = string.strip().split()
 	new_list = []
+	# new_list = [i if (len(i) > number) for i in new_string]
 
 	for i in new_string:
 		if (len(i) > number):
@@ -31,8 +32,15 @@ def ft_filter(string, number):
 	print(new_list)
 
 if __name__ == "__main__":
-	new_string = ft_remove_punctuation("Hel!lo, my friend")
-	number = 2
-	print(new_string)
-	print(number)
-	ft_filter(new_string, number)
+	string = sys.argv[1]
+	number = None
+
+	if not (isinstance(string, str)):
+		print("ERROR")
+	
+	if (not (isinstance(int(sys.argv[2]), int))):
+		print("ERROR")
+	number = int(sys.argv[2])
+
+	string = ft_remove_punctuation(string)
+	ft_filter(string, number)

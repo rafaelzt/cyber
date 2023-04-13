@@ -11,10 +11,22 @@
 #                                                                              #
 # **************************************************************************** #
 
-kata = (19,42,21)
+kata = (19, 20, 25)
 
-print(f"The 3 numbers are: {kata[0]}, {kata[1]}, {kata[2]}")
-# print("The 3 numbers are: {}, {}, {}".format(kata[0], kata[1], kata[2]))
-# print("The 3 numbers are: {num_1}, {num_2}, {num_3}".format(num_1 = kata[0], 
+
+print("The {} numbers are: ".format(len(kata)), end="")
+if (len(kata) == 1):
+	print("{}".format(kata[len(kata) - 1]))
+else:
+	for i in range(len(kata) - 1):
+		print("{}".format(kata[i]), end=", ")
+	print("{}".format(kata[len(kata) - 1]))
+
+# print("The {} numbers are: ".format(len(kata)), end="")
+# print(*kata, sep=', ')
+
+# print(f"The {len(kata)} numbers are: {kata[0]}, {kata[1]}, {kata[2]}")
+# print("The {} numbers are: {}, {}, {}".format(kata[0], kata[1], kata[2]))
+# print("The {length} numbers are: {num_1}, {num_2}, {num_3}".format(num_1 = kata[0], 
 # 															num_2 = kata[1], 
 # 															num_3 = kata[2]))
