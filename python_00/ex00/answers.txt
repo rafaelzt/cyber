@@ -12,9 +12,11 @@
 
 Output a list of installed packages and their versions.
 pip:
-  pip freeze
+  pip list
+  pip freeze > requirements.txt
 
 conda:
+  conda list
   conda list --export > requirements.txt
 
 Show the package metadata of numpy

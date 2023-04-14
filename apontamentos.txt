@@ -1,0 +1,18 @@
+[OK]    ex00/answers.txt & ex00/requirements.txt
+[DONE]  Adjust ex01/exec.py
+[OK]    ex02/whois.py
+[NOK]   ex03/count.py       => Empty parameter in python interpreter
+[OK]    ex04/operations.py
+[OK]    ex05/kata00.py
+[OK]    ex05/kata01.py
+[OK]    ex05/kata02.py
+[OK]    ex05/kata03.py
+[OK]    ex05/kata04.py
+[NOK]   ex06/recipe.py      => Error when try to delete an unexistent key
+                            => Error accept preparation time negative
+[NOK]   ex07/filterwords.py => Error with no argument passed via CLI
+                            => Error when received float as second argument
+                            => Error when received only first argument
+[NOK]   ex08/sos.py         => Error not working when received an key that doesnt exist in the dictionary
+[NOK]   ex09/guess.py       => Error not test if the user input is in the range (1 to 99)     
+[NOK]   ex10/loading.py     => Error not working

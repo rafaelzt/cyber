@@ -1,4 +1,3 @@
-#!/goinfre/rzamolo-/miniconda3/envs/42AI-rzamolo-/bin/python
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -25,7 +24,6 @@ def header():
 if __name__ == "__main__":
 	header()
 	secret = random.randint(0,99)
-	secret = 42
 	count = 1
 
 	while (True):

@@ -1,4 +1,3 @@
-#!/goinfre/rzamolo-/miniconda3/envs/42AI-rzamolo-/bin/python
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -16,7 +15,7 @@ import sys
 argument = sys.argv[1:]
 
 if len(argument) != 1:
-	print("AssertionError: more than one argument are provided")
+	print("AssertionError: none or more than one argument were provided")
 	exit()
 	
 try:

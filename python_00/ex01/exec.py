@@ -1,4 +1,3 @@
-#!/goinfre/rzamolo-/miniconda3/envs/42AI-rzamolo-/bin/python
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -13,9 +12,7 @@
 
 import sys
 
-new_list = []
-arguments = (sys.argv[1:][::-1]) # reverse the list
-for argument in arguments: # iterate over the list
-    new_list.append(argument[::-1]) # reverse each word
-
-print(' '.join(new_list)) # join the list with a space
+invert_arguments = sys.argv[:0:-1]
+for argument in invert_arguments:
+    print(argument[::-1].swapcase(), end=" ")
+print()
