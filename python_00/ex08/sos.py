@@ -22,9 +22,12 @@ morse_dict = {'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.',
 
 arguments = [letter.upper() for letter in sys.argv[1:]]
 
-for word in arguments:
-	for letter in word:
-		print(morse_dict[letter], end=" ")
-	if not (word == arguments[len(arguments) - 1]):
-		print("/", end="")
+try:
+    for word in arguments:
+        for letter in word:
+            print(morse_dict[letter], end=" ")
+        if not (word == arguments[len(arguments) - 1]):
+            print("/", end=" ")
+except:
+    print("Some of the letters you enter can't be converted!")
 print("")
