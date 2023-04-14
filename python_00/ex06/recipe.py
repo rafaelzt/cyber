@@ -60,10 +60,17 @@ def new_recipe():
 		rcp_ing = input()
 		rcp_ing_list.append(rcp_ing)
 
+	rcp_meal = input("Enter a meal type:\n")
+	try:
+		rcp_prep_time = int(input("Enter a preparation time:\n"))
+	except:
+		print("ValueError: Not a integer")
+		return
+
 	cookbook[rcp_name] = {
 		"ingredients": rcp_ing_list,
-		"meal": input("Enter a meal type:\n"),
-		"prep_time": int(input("Enter a preparation time:\n"))
+		"meal": rcp_meal,
+		"prep_time": rcp_prep_time
 
 	}
 
