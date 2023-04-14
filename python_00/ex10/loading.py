@@ -13,27 +13,21 @@
 
 import time
 
-def draw_bar():
-	start = 0
-	end = 50
-	step = 1
-	i = 0
 
-	for i in 
-	print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][".format(eta=3.4, prog_perc=20.34), end="")
-	# [{done:=<test1}{tbd:<test2}
-	print("="*i + ">", end="")
-	print(" "*(end - i), end="")
-	print("] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(current=1000, end=10000, time=1.33	))
+def draw_bar(current, end):
+	return (f"{'='*current}{'>'}{' '*(end - current)}")
 
-	i = 20
-
-	print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][".format(eta=3.4, prog_perc=20.34), end="")
-	# [{done:=<test1}{tbd:<test2}
-	print("="*i + ">", end="")
-	print(" "*(end - i), end="")
-	print("] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(current=1000, end=10000, time=1.33	))
-
+def progress_bar(start = 0, end = 100, step = 1):
+	for i in range(start, end, step):
+		print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][{bar}] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(
+			eta=3.4, 
+			prog_perc=20.34,
+			bar = draw_bar(i, end),
+			current=i + 1, 
+			end=end, 
+			time=1.33
+			), end="")
+		time.sleep(0.01)
 
 if __name__ == "__main__":
-	draw_bar()
+	progress_bar()

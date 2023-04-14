@@ -11,7 +11,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# TODO: Protect functions if received null
+# TODO: Protect functions if received null // check meal time to be a integer
 
 cookbook = {
 	"sandwich":{
@@ -64,6 +64,7 @@ def new_recipe():
 		"ingredients": rcp_ing_list,
 		"meal": input("Enter a meal type:\n"),
 		"prep_time": int(input("Enter a preparation time:\n"))
+
 	}
 
 def menu():
