@@ -11,7 +11,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# TODO: Protect functions if received null // check meal time to be a integer
+# TODO: Protect functions if received null // check meal time to be a integer (non-negative)
 
 cookbook = {
 	"sandwich":{

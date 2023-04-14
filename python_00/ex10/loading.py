@@ -11,14 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-import time
+from time import sleep
 
 
 def draw_bar(current, end):
 	return (f"{'='*current}{'>'}{' '*(end - current)}")
 
-def progress_bar(start = 0, end = 100, step = 1):
-	for i in range(start, end, step):
+def ft_progress(end):
+	for i in range(end):
 		print("\rETA: {eta:>3.2f}s [{prog_perc:>3}%][{bar}] {current:5}/{end:5} | elapsed time {time:2.2f}s".format(
 			eta=3.4, 
 			prog_perc=20.34,
@@ -27,7 +27,14 @@ def progress_bar(start = 0, end = 100, step = 1):
 			end=end, 
 			time=1.33
 			), end="")
-		time.sleep(0.01)
+		sleep(0.01)
 
 if __name__ == "__main__":
-	progress_bar()
+	listy = range(1000)
+	ret = 0
+	for elem in ft_progress(listy):
+		ret += (elem + 3) % 5
+		sleep(0.01)
+	print()
+	print(ret)
+

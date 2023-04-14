@@ -11,7 +11,10 @@
 #                                                                              #
 # **************************************************************************** #
 
+# TODO: Check guess range and negative number
+
 import random
+
 
 def header():
 	print("This is an interactive guessing game!")
