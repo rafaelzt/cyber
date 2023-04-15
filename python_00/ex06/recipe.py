@@ -6,9 +6,11 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 14:07:03 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/15 16:53:12 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/15 20:52:56 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+import sys
 
 cookbook = {
 	"sandwich":{
@@ -57,7 +59,7 @@ def menu():
 	elif (option == "5"):
 		msg = "Cookbook closed. Goodbye !"
 		print("{}".format(msg))
-		exit(1)		
+		sys.exit(-1)		
 	else:
 		print("{}".format("Sorry, this option does not exist."))
 

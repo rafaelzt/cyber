@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:12:29 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/11 17:20:07 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/15 20:53:13 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ argument = sys.argv[1:]
 
 if len(argument) != 1:
 	print("AssertionError: none or more than one argument were provided")
-	exit()
+	sys.exit(1)
 	
 try:
 	value = int(''.join(argument))

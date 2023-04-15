@@ -1,7 +1,7 @@
 [OK]    ex00/answers.txt & ex00/requirements.txt
 [OK]    Adjust ex01/exec.py
 [OK]    ex02/whois.py
-[NOK]   ex03/count.py       => Empty parameter in python interpreter
+[OK]    ex03/count.py       => Empty parameter in python interpreter
 [OK]    ex04/operations.py
 [OK]    ex05/kata00.py
 [OK]    ex05/kata01.py
