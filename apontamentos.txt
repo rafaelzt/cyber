@@ -1,5 +1,5 @@
 [OK]    ex00/answers.txt & ex00/requirements.txt
-[DONE]  Adjust ex01/exec.py
+[OK]    Adjust ex01/exec.py
 [OK]    ex02/whois.py
 [NOK]   ex03/count.py       => Empty parameter in python interpreter
 [OK]    ex04/operations.py
@@ -8,8 +8,8 @@
 [OK]    ex05/kata02.py
 [OK]    ex05/kata03.py
 [OK]    ex05/kata04.py
-[OK]   ex06/recipe.py      => Error when try to delete an unexistent key
-[OK]                      => Error accept preparation time negative
+[OK]    ex06/recipe.py      => Error when try to delete an unexistent key
+[OK]                        => Error accept preparation time negative
 [NOK]   ex07/filterwords.py => Error with no argument passed via CLI
                             => Error when received float as second argument
                             => Error when received only first argument
