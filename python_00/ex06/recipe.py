@@ -6,11 +6,9 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 14:07:03 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/12 15:19:38 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/15 16:53:12 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# TODO: Protect functions if received null // check meal time to be a integer (non-negative)
 
 cookbook = {
 	"sandwich":{
@@ -30,49 +28,6 @@ cookbook = {
 	}
 }
 
-def print_cookbook():
-	print("."*80)
-	print("{:^80}".format("Recipes"))
-	print("."*80)
-	for recipe in (cookbook.keys()):
-		print("{}".format(recipe))
-	# print(*cookbook, sep="\n")
-
-def print_details(rcp):
-	print("\nRecipe for {}:".format(rcp))
-	print("  Ingredients list:{}".format(str(cookbook[rcp]["ingredients"])))
-	print("  To be eaten for {}.".format(str(cookbook[rcp]["meal"])))
-	print("  Takes {} minutes of cooking.".format(str(cookbook[rcp]["prep_time"])))
-
-def del_recipe(rcp):
-	cookbook.pop(rcp)
-
-def new_recipe():
-	rcp_name = input("Enter a name:\n")
-
-	rcp_ing_list = []
-	rcp_ing = "ingredients"
-	
-	print("{}".format("Enter ingredients:"))
-	while (rcp_ing != ''):
-		rcp_ing = ""
-		rcp_ing = input()
-		rcp_ing_list.append(rcp_ing)
-
-	rcp_meal = input("Enter a meal type:\n")
-	try:
-		rcp_prep_time = int(input("Enter a preparation time:\n"))
-	except:
-		print("ValueError: Not a integer")
-		return
-
-	cookbook[rcp_name] = {
-		"ingredients": rcp_ing_list,
-		"meal": rcp_meal,
-		"prep_time": rcp_prep_time
-
-	}
-
 def menu():
 	print("List of available option:")
 	print("1: Add a recipe")
@@ -80,7 +35,7 @@ def menu():
 	print("3: Print a recipe")
 	print("4: Print the cookbook")
 	print("5: Quit")
-
+	
 	option = input("\nPlease select an option:\n>> ")
 
 	if (option == "1"):
@@ -102,12 +57,63 @@ def menu():
 	elif (option == "5"):
 		msg = "Cookbook closed. Goodbye !"
 		print("{}".format(msg))
-		return
+		exit(1)		
 	else:
 		print("{}".format("Sorry, this option does not exist."))
 
 	menu()
 
+def print_cookbook():
+	print("."*80)
+	print("{:^80}".format("Recipes"))
+	print("."*80)
+	for recipe in (cookbook.keys()):
+		print("{}".format(recipe))
+	# print(*cookbook, sep="\n")
+
+def print_details(rcp):
+	print("\nRecipe for {}:".format(rcp))
+	print("  Ingredients list:{}".format(str(cookbook[rcp]["ingredients"])))
+	print("  To be eaten for {}.".format(str(cookbook[rcp]["meal"])))
+	print("  Takes {} minutes of cooking.".format(str(cookbook[rcp]["prep_time"])))
+
+def del_recipe(rcp):
+	try:
+		cookbook.pop(rcp)
+	except:
+		msg = "Please enter a recipe name to delete it:"
+		print_cookbook()
+		print("{}".format(msg))
+		del_recipe(input(">> "))
+
+def new_recipe():
+	rcp_name = input("Enter a name:\n")
+
+	rcp_ing_list = []
+	rcp_ing = "ingredients"
+	
+	print("{}".format("Enter ingredients:"))
+	while (rcp_ing != ''):
+		rcp_ing = ""
+		rcp_ing = input()
+		rcp_ing_list.append(rcp_ing)
+
+	rcp_meal = input("Enter a meal type:\n")
+	try:
+		rcp_prep_time = int(input("Enter a preparation time:\n"))
+		if (rcp_prep_time < 0):
+			print("Preparation time can't be negative!")
+			return
+	except:
+		print("ValueError: Not a integer")
+		return
+
+	cookbook[rcp_name] = {
+		"ingredients": rcp_ing_list,
+		"meal": rcp_meal,
+		"prep_time": rcp_prep_time
+
+	}
 
 if __name__ == "__main__":
 	print("Welcome to the Python Cookbook !")

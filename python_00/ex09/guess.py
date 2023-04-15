@@ -6,14 +6,12 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 12:37:19 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/13 12:37:20 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/15 17:18:48 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# TODO: Check guess range and negative number
 
 import random
-
 
 def header():
 	print("This is an interactive guessing game!")
@@ -23,16 +21,20 @@ def header():
 
 if __name__ == "__main__":
 	header()
-	secret = random.randint(0,99)
+	secret = random.randint(1,100)
 	count = 1
 
 	while (True):
+		
 		user_input = input("What's your guess between 1 and 99?\n>> ")
+		
 		if (user_input == "exit"):
 			break
 		try:
 			user_input = int(user_input)
-			if (user_input > secret):
+			if not (0 < user_input < 100):
+				print("Input not between 1 and 99")
+			elif (user_input > secret):
 				print("Too high!")
 			elif (user_input < secret):
 				print("Too low!")

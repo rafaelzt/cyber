@@ -8,11 +8,11 @@
 [OK]    ex05/kata02.py
 [OK]    ex05/kata03.py
 [OK]    ex05/kata04.py
-[NOK]   ex06/recipe.py      => Error when try to delete an unexistent key
-                            => Error accept preparation time negative
+[OK]   ex06/recipe.py      => Error when try to delete an unexistent key
+[OK]                      => Error accept preparation time negative
 [NOK]   ex07/filterwords.py => Error with no argument passed via CLI
                             => Error when received float as second argument
                             => Error when received only first argument
 [OK]   ex08/sos.py         => Error not working when received an key that doesnt exist in the dictionary
-[NOK]   ex09/guess.py       => Error not test if the user input is in the range (1 to 99)     
+[OK]   ex09/guess.py       => Error not test if the user input is in the range (1 to 99)     
 [NOK]   ex10/loading.py     => Error not working
