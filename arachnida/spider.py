@@ -6,14 +6,16 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 12:45:24 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/17 14:08:05 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/17 17:34:02 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+import argparse
+import os
+import sys
+
 import requests
 from bs4 import BeautifulSoup
-
-url = "42madrid.com"
 
 # print("Status code: {}\n".format(r.status_code))
 # print("Header: {}\n".format(r.headers))
@@ -21,7 +23,7 @@ url = "42madrid.com"
 # print("Text: {}\n".format(r.text))
 # print("Json: {}\n".format(r.json))
 
-def ft_get_all_links(domain) -> list:
+def ft_get_all_links(url) -> list:
 	domain = "https://" + url
 	r = requests.get(domain)
 	page_source = r.text
@@ -41,10 +43,9 @@ def ft_get_all_links(domain) -> list:
 	full_domain_lst = list(dict.fromkeys(full_domain_lst)) # Remove duplicated URLs
 	return(full_domain_lst)
 
-def ft_get_all_images(url_lst):
+def ft_get_all_images(url_lst, path):
 	i = 0
 	for url in url_lst:
-		# url_lst.pop(url)
 		r = requests.get(url)
 		page_source = r.text
 		soup = BeautifulSoup(page_source, 'html.parser')
@@ -54,9 +55,11 @@ def ft_get_all_images(url_lst):
 				filename = img_url.rsplit('/', 1)[1]
 				# print("URL: {} -> {}".format(img_url, filename))
 				r = requests.get(img_url, stream=True)
-				with open('./src/' + filename, 'wb') as file:
-					for chunk in r.iter_content(chunk_size=1024):
-						file.write(chunk)
+				# with open(path + filename, 'wb') as file:
+				# 	for chunk in r.iter_content(chunk_size=1024):
+				# 		file.write(chunk)
+				with open(path + filename, 'wb') as file:
+						file.write(r.content)
 				
     # with open(file_name, 'wb') as f:
     #     for chunk in get_response.iter_content(chunk_size=1024):
@@ -66,13 +69,16 @@ def ft_get_all_images(url_lst):
 				
 			except:
 				continue
-		
-
-
-
-url_lst = (ft_get_all_links(url))
-ft_get_all_images(url_lst)
 
 # Search all <img> tags
 # for link in soup.find_all('img'):
 #     print("Images: {images}".format(images = link.get('src')))
+
+if __name__ == "__main__":
+	try:
+		path = ("./" + sys.argv[2] + "/")
+		os.mkdir(path)
+	except FileExistsError as fe:
+		print("WARN:\n\tFolder already exist!\n\t{}".format(fe))
+	ft_get_all_images(ft_get_all_links(sys.argv[1]), path)
+	
