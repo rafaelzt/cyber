@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 12:45:24 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/17 17:34:02 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/17 18:37:12 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,18 @@ import sys
 
 import requests
 from bs4 import BeautifulSoup
+
+parser = argparse.ArgumentParser(description='Webscrap an URL and download images')
+parser.add_argument('Recursive', metavar='-r', nargs=1,
+                    help='Recursivly download images')
+parser.add_argument('Depth', metavar='-l [N]', type=int, nargs=1,
+                    help='Depth you want to scrap', default=5)
+parser.add_argument('Path' ,metavar='-p [PATH]', type=str, nargs=1,
+					help='Specify were downloaded images should be saved', default='./data/')
+					
+
+args = parser.parse_args()
+print(args.accumulate(args.integers))
 
 # print("Status code: {}\n".format(r.status_code))
 # print("Header: {}\n".format(r.headers))
