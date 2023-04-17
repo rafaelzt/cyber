@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:23:21 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/17 10:56:11 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/17 12:40:32 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ import sys
 
 punctuation = "!#$%&'()\"*+,-./:;<=>?@[\\]^_`{|}~"
 
-def text_analyzer(argument = sys.argv[1:]):
+def text_analyzer(argument = None):
 	'''
 	This function counts the number of upper characters, lower characters,
 	punctuation and spaces in a given text.
@@ -25,13 +25,14 @@ def text_analyzer(argument = sys.argv[1:]):
 		lower = 0
 		space = 0
 
+		if argument == None:
+			print("What is the text to analyse?")
+			argument = input()
+
 		if not(isinstance(argument, str)):
 			print("The argument is not a string.")
 			return
-
-		if len(argument) == 0:
-			print("What is the text to analyse?")
-			argument = input()
+			
 		for letter in argument:
 			if letter.isupper():
 				upper += 1
@@ -52,8 +53,9 @@ def text_analyzer(argument = sys.argv[1:]):
 		
 	
 if __name__ == "__main__":
-	if (len(sys.argv) > 2):
-		print("You should enter only one argument.")
+	if (len(sys.argv) == 2):
+		text_analyzer(''.join(sys.argv[1]))
 	else:
-		text_analyzer(''.join(sys.argv[1:]))
+		print("Error")
+		
 
