@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:12:29 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/17 10:56:16 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/18 10:52:32 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,17 @@ import sys
 argument = sys.argv[1:]
 
 if len(argument) != 1:
-	print("AssertionError: none or more than one argument were provided")
-	sys.exit(1)
-	
+    print("AssertionError: none or more than one argument were provided")
+    sys.exit(1)
+    
 try:
-	value = int(''.join(argument))
-	if value == 0:
-		print("I'm Zero.")
-	elif value % 2 == 0:
-		print("I'm Even.")
-	elif value % 2 != 0:
-		print("I'm Odd.")
+    value = int(''.join(argument))
+    if value == 0:
+        print("I'm Zero.")
+    elif value % 2 == 0:
+        print("I'm Even.")
+    elif value % 2 != 0:
+        print("I'm Odd.")
 except ValueError:
-	print("AssertionError: argument is not a integer")
+    print("AssertionError: argument is not a integer")
 

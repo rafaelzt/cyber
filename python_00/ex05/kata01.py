@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 12:59:45 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/17 10:55:57 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/18 10:53:04 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,5 +18,5 @@ kata = {
 }
 
 for k in kata:
-	v = kata[k]
-	print("{} was created by {}".format(k, v))
+    v = kata[k]
+    print("{} was created by {}".format(k, v))
