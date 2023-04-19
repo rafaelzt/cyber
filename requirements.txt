@@ -23,6 +23,7 @@ debugpy=1.5.1=py37he9d5cce_0
 decorator=5.1.1=pyhd3eb1b0_0
 defusedxml=0.7.1=pyhd3eb1b0_0
 entrypoints=0.4=py37hecd8cb5_0
+exif=1.6.0=pypi_0
 exifread=3.0.0=pyhd8ed1ab_0
 flit-core=3.6.0=pyhd3eb1b0_0
 gettext=0.21.0=he85b6c0_1
@@ -104,6 +105,7 @@ pexpect=4.8.0=pyhd3eb1b0_3
 pickleshare=0.7.5=pyhd3eb1b0_1003
 pip=22.3.1=py37hecd8cb5_0
 pkgutil-resolve-name=1.3.10=py37hecd8cb5_0
+plum-py=0.8.6=pypi_0
 ply=3.11=py37_0
 prometheus_client=0.14.1=py37hecd8cb5_0
 prompt-toolkit=3.0.36=py37hecd8cb5_0

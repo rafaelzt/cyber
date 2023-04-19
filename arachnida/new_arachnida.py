@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    new_arachnida.py                                   :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rzamolo- <rzamolo-@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:06:57 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/19 10:30:48 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/19 13:30:18 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ import urllib3
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
+
+lst_items = []
+num_calls = 0
 
 def ft_parse_arguments(*arg):
     parser = argparse.ArgumentParser(
@@ -59,6 +62,7 @@ def ft_parse_arguments(*arg):
     args = parser.parse_args()
     return (args)
 
+
 def ft_get_content(url, method = 'GET'):
     http = urllib3.PoolManager()
     try:
@@ -73,9 +77,11 @@ def ft_get_content(url, method = 'GET'):
         exit(1)
     return(content.data)
 
+
 def ft_warmup_my_soup(content):
     soup = BeautifulSoup(content, 'html.parser')
     return (soup)
+
 
 def ft_extract_link_from_soup(soup):
     links = []
@@ -83,31 +89,32 @@ def ft_extract_link_from_soup(soup):
         links.append(link.get('href'))
     return (links)
 
+
 def ft_recursive_list(scrape_lst, original_url):
-    if len(scrape_lst) == 0:
+    global lst_items
+    domain = urlparse(original_url).netloc
+    if len(scrape_lst) == 0: 
         return
-    print(scrape_lst[0])
+
+    if (domain in scrape_lst[0]):
+        #print("Domain: {} \t->\t Scrape: {}".format(domain, scrape_lst[0]))
+        lst_items.append(scrape_lst[0])
+        lst_items = list(dict.fromkeys(lst_items))
+
     ft_recursive_list(scrape_lst[1:], original_url)
 
-def ft_create_multi_level_lst(url, iter = 0):
-    domain = urlparse(url).netloc
-    lst = []
-    while (iter >= 0):
-        print("Domain: {} -> URL: {}".format(domain, url))
-        if (domain in url):
-            lst.append(ft_extract_link_from_soup(ft_warmup_my_soup(ft_get_content(url))))
-        iter -= 1
-    return (iter + 1, lst)
 
+def ft_create_multi_level_lst(lst_items, iteration = 0):
+    global num_calls
 
-#def iterate_list(lst):
-    # base case: if the list is empty, return
-#    if len(lst) == 0:
-#       return
-    
-    # recursive case: iterate into the first element of the list
-#    print(lst[-1])
-#    iterate_list(lst[:-1])
+    if not(num_calls >= iteration):
+        for item in lst_items:
+            print(item, num_calls)
+            ft_create_multi_level_lst(lst_items[])
+        num_calls += 1
+    else:
+        return
+
 
 if __name__ == "__main__":
     #arguments = ft_parse_arguments(sys.argv)
@@ -123,6 +130,12 @@ if __name__ == "__main__":
     #print(my_list[::-1])
 
     url = "https://42madrid.com"
+    domain = urlparse(url).netloc
+    #print(ft_get_content(url))
+    #print(ft_warmup_my_soup(ft_get_content(url)))
+    lst = ft_extract_link_from_soup(ft_warmup_my_soup(ft_get_content(url)))
+    ft_recursive_list(lst, url)
+    # ft_create_multi_level_lst(url)
+    # print(lst_items)
 
-    levels = ft_create_multi_level_lst(url)
-    print(levels)
+    ft_create_multi_level_lst(lst, 1)
