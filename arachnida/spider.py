@@ -6,13 +6,12 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 12:45:24 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/18 15:04:05 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/19 22:10:29 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import argparse
 import os
-import exifread
 
 import requests
 from bs4 import BeautifulSoup
