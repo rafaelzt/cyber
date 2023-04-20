@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:06:57 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/20 12:46:20 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/20 15:22:39 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,24 +97,37 @@ def ft_extract_tags_from_soup(soup, dict_tags):
 
 
 def ft_create_multi_level_lst(url, iteration = 0):
-    pass
+    lst_items = []
+    lst_items.append(ft_extract_tags_from_soup(ft_warmup_my_soup(ft_get_content(url)), dict_tag_images))
+    if iteration > 0:
+        for item in lst_items:
+            for i in item:
+                lst_items.append(ft_extract_tags_from_soup(ft_warmup_my_soup(ft_get_content(i)), dict_tag_images))
+    return (lst_items)
+    
 
 def ft_get_all_images(url_lst, path):
+    try:
+        os.mkdir(path)
+    except FileExistsError as fe:
+        print("WARN:\n\tFolder already exist!\n\t{}".format(fe))
+        
     for image in url_lst[0]:
         try:
             filename = image.rsplit('/', 1)[1]
-            r = requests.get(image, stream=True)
-            with open(path + '/' + filename, 'wb+') as file:
+            if (filename.split('.')[-1] not in lst_image_types):
+                r = requests.get(image, stream=True)
+                with open(path + '/' + filename, 'wb+') as file:
                     file.write(r.content)
         except:
             continue
 
 if __name__ == "__main__":
     url = "https://42madrid.com"
-    iteration = 0
+    iteration = 1
     
-    if iteration == 0:
-        lst_items.append(ft_extract_tags_from_soup(ft_warmup_my_soup(ft_get_content(url)), dict_tag_images))
-    else:
-        print("Nothing!")
-    ft_get_all_images(lst_items, "./data/")
+    lst_img = ft_create_multi_level_lst(url, iteration)
+    for i in lst_img:
+        print(i)
+        print()
+
