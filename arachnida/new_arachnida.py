@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:06:57 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/19 21:50:48 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/20 12:46:20 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,22 @@
 import argparse
 import os
 import re
+import requests
 import sys
 import urllib3
-
 
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 
 lst_items = []
-num_calls = 0
+lst_image_types = ["jpeg", "jpg", "gif", "bmp", "png"]
+dict_tag_images = {
+                "img": ["src"],
+                "images": ["src"]
+                }
+dict_tag_links = {"a": ["href"]}
+
 
 def ft_parse_arguments(*arg):
     parser = argparse.ArgumentParser(
@@ -82,27 +88,33 @@ def ft_warmup_my_soup(content):
     return (soup)
 
 
-def ft_extract_link_from_soup(soup):
+def ft_extract_tags_from_soup(soup, dict_tags):
     links = []
-    for link in (soup.findAll('a', attrs={'href': re.compile("^https?://")})):
-        links.append(link.get('href'))
+    for link in (soup.findAll(dict_tags.keys())):
+        for _, value in dict_tags.items():
+            links.append(link.get((''.join(value))))
     return (links)
 
 
-def ft_create_url_lst(scrape_lst, original_url):
-	pass
-
-
 def ft_create_multi_level_lst(url, iteration = 0):
-    
-    if (num_calls == iteration):
-        return (lst_items)
-    
-	lst_items.append(ft_extract_link_from_soup(ft_warmup_my_soup(ft_get_content(url))))
-    
-    return (lst_items)
+    pass
 
+def ft_get_all_images(url_lst, path):
+    for image in url_lst[0]:
+        try:
+            filename = image.rsplit('/', 1)[1]
+            r = requests.get(image, stream=True)
+            with open(path + '/' + filename, 'wb+') as file:
+                    file.write(r.content)
+        except:
+            continue
 
 if __name__ == "__main__":
-    ft_create_multi_level_lst("https://42madrid.com", 2)
-    print(lst_items)
+    url = "https://42madrid.com"
+    iteration = 0
+    
+    if iteration == 0:
+        lst_items.append(ft_extract_tags_from_soup(ft_warmup_my_soup(ft_get_content(url)), dict_tag_images))
+    else:
+        print("Nothing!")
+    ft_get_all_images(lst_items, "./data/")
