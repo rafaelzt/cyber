@@ -1,89 +1,35 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    new_arachnida.py                                   :+:      :+:    :+:    #
+#    tests3.py                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/18 15:06:57 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/21 10:42:00 by rzamolo-         ###   ########.fr        #
+#    Created: 2023/04/21 10:26:09 by rzamolo-          #+#    #+#              #
+#    Updated: 2023/04/21 10:43:29 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-import argparse
 import os
-import requests
 import sys
-
+import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
 
-lst_items = []
-lst_image_types = ["jpeg", "jpg", "gif", "bmp", "png"]
-dict_tag_images = {
-                "img": ["src"],
-                "images": ["src"]
-                }
-dict_tag_links = {"a": ["href"]}
+def is_valid_url(url):
+    parsed = urlparse(url)
+    return bool(parsed.netloc) and bool(parsed.scheme)
 
 
-def ft_parse_arguments(*arg):
-    parser = argparse.ArgumentParser(
-            prog=sys.argv[0],
-            description="Webscrape an URL and download specific file type",
-            epilog="And magic is done!",
-            )
-
-    # Positional Arguments
-    parser.add_argument("url",
-                        help="Specify URL to scrape",
-            )
-
-    # Optional Arguments
-    parser.add_argument("-r", "--recursive",
-                        dest="recursive",
-                        action="store_true",
-                        help="If present, recursively download files",
-            )
-    parser.add_argument("-l", "--length",
-                        dest="depth",
-                        metavar="[N]",
-                        default=5,
-                        type=int,
-                        help="URL max depth to search for files",
-            )
-    parser.add_argument("-p", "--path",
-                        dest="path",
-                        metavar="[PATH]",
-                        default="./data",
-                        type=str,
-                        help="Specify path where files will be downloaded",
-                        )
-
-    args = parser.parse_args()
-    return (args)
-
-
-def ft_check_url(url):
-    parser = urlparse(url)
-    return bool(parser.netloc) and bool(parser.scheme)
-
-
-def ft_get_all_links(url):
+def get_all_links(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     urls = [a.attrs.get('href') for a in soup.select('a[href]')]
     return urls
 
 
-def ft_warmup_my_soup(content):
-    soup = BeautifulSoup(content, 'html.parser')
-    return (soup)
-
-
-def download_image(url, folder='data'):
+def download_image(url, folder='downloaded_images'):
     if not os.path.exists(folder):
         os.makedirs(folder)
 
@@ -96,8 +42,9 @@ def download_image(url, folder='data'):
 
     print(f"Downloaded {url}")
 
-def ft_download_content(url, depth=0):
-    if not ft_check_url(url):
+
+def main(url, depth):
+    if not is_valid_url(url):
         print("Invalid URL")
         return
 
@@ -131,20 +78,21 @@ def ft_download_content(url, depth=0):
                 download_image(img_url)
                 img_urls.add(img_url)
 
-        sub_links = ft_get_all_links(current_url)
+        sub_links = get_all_links(current_url)
         for link in sub_links:
             link = urljoin(current_url, link)
-            if ft_check_url(link) and link not in visited_urls:
+            if is_valid_url(link) and link not in visited_urls:
                 urls_to_visit.append((link, current_depth + 1))
 
     print(f"Downloaded {len(img_urls)} images.")
 
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print("Usage: python new_arachnida.py <URL> <DEPTH>")
+        print("Usage: python script.py <URL> <DEPTH>")
         sys.exit(1)
 
     url = sys.argv[1]
     depth = int(sys.argv[2])
 
-    ft_download_content(url, depth)
+    main(url, depth)
