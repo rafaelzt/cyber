@@ -1,0 +1,11 @@
+Port 4242
+
+PermitRootLogin prohibit-password
+AuthorizedKeysFile	.ssh/authorized_keys
+
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no
+
+Subsystem	sftp	internal-sftp
+

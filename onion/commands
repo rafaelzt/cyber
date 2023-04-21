@@ -1,0 +1,123 @@
+# ALPINE
+apk update 
+
+# OPENRC / VIM / GPG / cURL 
+apk add vim openrc gpg curl
+openrc
+touch /run/openrc/softlevel
+
+# NGINX
+apk add nginx
+rc-update add nginx default
+
+# SSH
+apk add openssh
+rc-update add sshd
+
+# TOR
+apk add tor
+rc-update add tor
+
+rc-service nginx start
+rc-service sshd start
+
+
+
+mkdir -p /etc/nginx/sites-available/
+cat <<EOF > /etc/nginx/sites-available/default
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	listen unix:/var/run/nginx.sock;
+}
+EOF
+
+mkdir -p /usr/share/nginx/html
+echo "Hello" > /usr/share/nginx/html/index.html
+
+cat <<EOF > /etc/tor/torrc
+# server_name <HASH_FROM_CMD_BELOW>;
+Log notice file /var/log/tor/log
+RunAsDaemon 1
+DataDirectory /var/lib/tor
+HiddenServiceDir /var/lib/tor/hiddenservicename/
+HiddenServicePort 80 unix:/var/run/nginx.sock
+EOF
+
+
+rc-service tor restart
+
+cat /var/lib/tor/hiddenservicename/hostname
+
+rc-service nginx restart
+
+
+
+/usr/share/nginx/html # history
+   0 apk update
+   1 apk add vim nginx openrc gpg curl
+   2 openrc
+   3 touch /run/openrc/softlevel
+   4 apk add nginx
+   5 rc-service nginx start
+   6 find / -name nginx.conf
+   7 vim /etc/nginx/nginx.conf
+   8 rc-service nginx restart
+   9 curl localhost
+  10 vim /etc/nginx/nginx.conf
+  11 cat /etc/nginx/nginx.conf
+  12 mkdir /etc/nginx/conf.d/default.conf
+  13 mkdir /etc/nginx/conf.d/
+  14 vim /etc/nginx/conf.d/default.conf
+  15 rc-service nginx restart
+  16 mkdir /usr/share/nginx/html
+  17 cd /usr/share/nginx/html
+  18 echo "Hello" > index.html
+  19 history
+
+# HISTORY
+#    0 # ALPINE
+   1 apk update
+   2 # OPENRC / VIM / GPG / cURL
+   3 apk add vim openrc gpg curl
+   4 openrc
+   5 touch /run/openrc/softlevel
+   6 # NGINX
+   7 apk add nginx
+   8 rc-update add nginx default
+   9 # SSH
+  10 apk add openssh
+  11 rc-update add sshd
+  12 # TOR
+  13 apk add tor
+  14 rc-update add tor
+  15 rc-service nginx start
+  16 rc-service sshd start
+  17 rc-service tor start
+  18 ls
+  19 mkdir -p /etc/nginx/conf.d/default.conf
+  20 rm /etc/nginx/conf.d/default.conf
+  21 rm -rf /etc/nginx/conf.d/default.conf
+  22 mkdir -p /etc/nginx/conf.d/
+  23 vim /etc/nginx/conf.d/default.conf
+  24 vim /etc/nginx/nginx.conf
+  25 rc-service nginx restart
+  26 cat /etc/nginx/nginx.conf
+  27 cat /etc/nginx/conf.d/default.conf
+  28 cd /usr/share/nginx/html
+  29 mkdir /usr/share/nginx/html
+  30 echo "Hola" > /usr/share/nginx/html/index.html
+  31 vim /etc/tor/torrc.sample
+  32 vim /etc/tor/torrc
+  33 mkdir -p /var/lib/tor/my_website/
+  34 cd /var/lib/tor/
+  35 ls 'lha
+  36 ls -lha
+  37 chown tor my_website/
+  38 chmod 700 my_website/
+  39 ls
+  40 cd my_website/
+  41 rc-service tor restart
+  42 ls
+  43 cat hostname
+  44 history
