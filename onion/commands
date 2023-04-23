@@ -121,3 +121,11 @@ rc-service nginx restart
   42 ls
   43 cat hostname
   44 history
+
+
+##########################################
+docker image rm -f tor && docker image build -t tor . --no-cache --build-arg USER=rzamolo- --build-arg PASSWD=42Madrid
+##########################################
+docker container run --rm -d -p 4242:4242 -p 9050:9050 -p 8080:80 tor
+##########################################
+openssl rand -base64 6

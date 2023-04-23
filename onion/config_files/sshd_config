@@ -1,6 +1,7 @@
 Port 4242
 
-PermitRootLogin prohibit-password
+PermitRootLogin without-password
+PubkeyAuthentication yes
 AuthorizedKeysFile	.ssh/authorized_keys
 
 AllowTcpForwarding no
