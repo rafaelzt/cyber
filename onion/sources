@@ -1,0 +1,11 @@
+docker network create -d bridge tor_network
+
+https://wiki.alpinelinux.org/wiki/Nginx
+
+https://wiki.alpinelinux.org/wiki/Setting_up_a_SSH_server
+
+https://copyprogramming.com/howto/how-to-start-nginx-server-in-linux#how-to-start-an-nginx-server-or-service-in-linux?utm_content=cmp-true
+
+https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/
+
+https://hub.docker.com/r/domistyle/tor-browser
