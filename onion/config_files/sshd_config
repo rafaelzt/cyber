@@ -1,8 +1,20 @@
 Port 4242
 
-PermitRootLogin without-password
+Protocol 2
+
+PermitRootLogin no
 PubkeyAuthentication yes
 AuthorizedKeysFile	.ssh/authorized_keys
+
+# Set a login grace time:
+# Limit the time allowed for successful login. This can help prevent brute-force attacks.
+LoginGraceTime 30
+
+# Configure idle timeout interval:
+# Disconnect idle SSH sessions after a certain period to reduce the risk of unauthorized access.
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
 
 AllowTcpForwarding no
 GatewayPorts no
