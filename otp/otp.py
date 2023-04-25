@@ -6,11 +6,10 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 11:22:09 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/24 11:23:34 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/04/25 11:56:46 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# How to parse arguments from the command line
 import argparse
 
 if __name__ == "__main__":
