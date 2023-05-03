@@ -6,7 +6,7 @@
 #    By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 11:22:09 by rzamolo-          #+#    #+#              #
-#    Updated: 2023/04/28 17:44:40 by rzamolo-         ###   ########.fr        #
+#    Updated: 2023/05/03 11:34:22 by rzamolo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,22 +16,26 @@ import argparse, codecs, math, time
 secret = "4e4556455220474f4e4e41204749564520594f55205550"
 secret_time = time.time()
 
-def hex_to_str(secret):
-    # secret_hex = bytes(secret)
-    secret_txt = codecs.decode(secret, "hex")
+def hex_to_bin(secret):
+    secret_txt = ""
 
-    # https://stackoverflow.com/questions/18815820/how-to-convert-string-to-binary
-    # secret_binary = ' '.join(format(ord(x),'b') for x in secret_txt) # can bee done using bytearray
-    secret_binary = ' '.join(format(x, 'b') for x in bytearray(secret_txt))
+    for char in secret:
+        hex_value = int(char, 16)
+        binary_char = bin(hex_value)[2:]
+        binary_char = binary_char.zfill(4)
+        secret_txt += binary_char + " "
 
-    # print(secret_hex)
-    print(f"Plain text: {secret_txt}")
-    print(f"Binary text: {secret_binary}")
-    print(f"Binary text: 01001110 01000101 01010110 01000101 01010010 00100000 01000111 01001111 01001110 01001110 01000001 00100000 01000111 01001001 01010110 01000101 00100000 01011001 01001111 01010101 00100000 01010101 01010000")
+    secret_binary = secret_txt.rstrip()
+    return ((secret_binary))
 
 def convert_to_binary(secret, expiration=30):
-    secret_time = int(123)
-    secret_time_bytes = (secret_time).to_bytes(8, byteorder='big')
+    hex_to_bin(secret)
+
+    current_time = time.time()
+    current_time_int = int(current_time)
+    binary_time = format(current_time_int, "b")
+    big_endian_bytes = struct.pack(">Q", current_time_int)
+
 
     print(f"Binary current time: {secret_time_bytes}")
 
