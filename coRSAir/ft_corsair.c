@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_corsair.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzamolo- <rzamolo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rzamolo- <rzamolo-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 11:44:28 by rzamolo-          #+#    #+#             */
-/*   Updated: 2023/04/24 12:36:44 by rzamolo-         ###   ########.fr       */
+/*   Created: 2023/05/04 12:10:54 by rzamolo-          #+#    #+#             */
+/*   Updated: 2023/05/04 12:16:20 by rzamolo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_corsair.h"
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <openssl/evp.h>
+#include <openssl/rsa.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
-int	main(void)
+
+
+int main(void)
 {
-	
 	return (0);
 }
