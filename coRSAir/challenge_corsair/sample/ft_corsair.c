@@ -6,7 +6,7 @@
 /*   By: rzamolo- <rzamolo-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:10:54 by rzamolo-          #+#    #+#             */
-/*   Updated: 2023/05/04 13:12:28 by rzamolo-         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:52:01 by rzamolo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int decrypt_file(const char *input_file, const char * output_file, const char *p
 
 int main(void)
 {
-	const char *input_file = "3.bin";
-	const char *private_key_file = "3.pem";
+	const char *input_file = "message.bin";
+	const char *private_key_file = "private.pem";
 	const char *output_file = "decrypted.txt";
 
     if (decrypt_file(input_file, output_file, private_key_file) == 0)
