@@ -1,4 +1,8 @@
-*/data*/*
+
+.vscode/*
+data*/*
+
+.DS_Store
 *.pyc
+
 Miniconda3-latest-MacOSX-x86_64.sh
-*/.DS_Store
