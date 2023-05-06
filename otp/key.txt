@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Hola que tal, como estas. Este é um test para crear una llave mas grande que 64 letras
-=======
-NEVER GONNA GIVE YOU UP never never
->>>>>>> 57af458afb41941626699b1b0152c7eb6cfc0425
