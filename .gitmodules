@@ -1,0 +1,15 @@
+[submodule "python_00"]
+	path = python_00
+	url = git@github.com:rafaelzt/python_00.git
+[submodule "otp"]
+	path = otp
+	url = git@github.com:rafaelzt/otp.git
+[submodule "coRSAir"]
+	path = coRSAir
+	url = git@github.com:rafaelzt/coRSAir.git
+[submodule "onion"]
+	path = onion
+	url = git@github.com:rafaelzt/onion.git
+[submodule "arachnida"]
+	path = arachnida
+	url = git@github.com:rafaelzt/arachnida.git
