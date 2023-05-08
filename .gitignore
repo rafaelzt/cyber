@@ -6,3 +6,4 @@ data*/*
 *.pyc
 
 Miniconda3-latest-MacOSX-x86_64.sh
+*/a.out
