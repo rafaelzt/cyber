@@ -13,3 +13,5 @@
 [submodule "arachnida"]
 	path = arachnida
 	url = git@github.com:rafaelzt/arachnida.git
+[submodule "git@github.com:rafaelzt/tsunami.git"]
+	url = tsunami
